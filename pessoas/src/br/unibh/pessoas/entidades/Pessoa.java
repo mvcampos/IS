@@ -21,6 +21,13 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + "]";
+	}
+
 
 
 	public Pessoa(Long id, String nome, String endereco, String telefone) {
