@@ -1,15 +1,13 @@
 package br.unibh.pessoas;
 
-import java.util.Date;
-
-import br.unibh.pessoas.entidades.PessoaFisica;
+import br.unibh.pessoas.persistencia.PessoaFisicaDAO;
 
 public class Main {
-	
-	public static void main(String[] args){
-		
-		PessoaFisica pf1 = new PessoaFisica(1L, "Vinicius", "end", "31333333", "0849566663521", "vinicius@mvcmapos.com.br", new Date(), "m");
-		System.out.println(pf1);
+
+	public static void main(String[] args) {
+
+		PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
+		pessoafisicaDAO.findAll();
 	}
 
 }
