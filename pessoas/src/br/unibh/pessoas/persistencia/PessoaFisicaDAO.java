@@ -1,6 +1,7 @@
 package br.unibh.pessoas.persistencia;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import com.mysql.jdbc.PreparedStatement;
 import br.unibh.pessoas.entidades.PessoaFisica;
 
 public class PessoaFisicaDAO implements DAO<PessoaFisica, Long> {
+	
+	private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Override
 	public PessoaFisica find(Long id) {
@@ -38,7 +41,28 @@ public class PessoaFisicaDAO implements DAO<PessoaFisica, Long> {
 
 	@Override
 	public void insert(PessoaFisica t) {
-		// TODO Auto-generated method stub
+		
+		try {
+			PreparedStatement p = (PreparedStatement) JDBCUtil.getConnection().
+								prepareStatement("insert into tb_pessoa_fisica (nome,endereco,telefone,cpf,email,data_nascimento,sexo) values"
+											+ " (?,?,?,?,?,?,?)");
+			p.setString(1, t.getNome());
+			p.setString(2, t.getEndereco());
+			p.setString(3, t.getTelefone());
+			p.setString(4, t.getCpf());
+			p.setString(5, t.getEmail());
+			p.setString(6, df.format(t.getDataNascimento()));
+			p.setString(7, t.getSexo());
+			p.executeUpdate();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			JDBCUtil.closeConnection();
+		}
+
 
 	}
 

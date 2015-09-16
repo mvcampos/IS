@@ -1,5 +1,6 @@
 package br.unibh.pessoas;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -23,10 +24,23 @@ public class Testes {
 	}
 	
 	@Test
+	@Ignore
 	public void buscar(){
 		PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
 		PessoaFisica pessoafisica = pessoafisicaDAO.find(1L);
 		Assert.assertEquals(pessoafisica.getNome(), "Tatiana T. Mayer");
 		System.out.println(pessoafisica.getEmail() + " - " + pessoafisica.getNome());
 	}
+	
+	@Test
+	public void inserir(){
+		
+		PessoaFisica pf = new PessoaFisica(null, "vinicius", "vinicius", "vinicius", "vinicius", "vinicius", new Date(), "M");
+		
+		PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
+		pessoafisicaDAO.insert(pf);
+		
+	}
+	
+	
 }
