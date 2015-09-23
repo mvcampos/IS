@@ -33,6 +33,7 @@ public class Testes {
 	}
 	
 	@Test
+	@Ignore
 	public void inserir(){
 		
 		PessoaFisica pf = new PessoaFisica(null, "vinicius", "vinicius", "vinicius", "vinicius", "vinicius", new Date(), "M");
@@ -40,6 +41,22 @@ public class Testes {
 		PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
 		pessoafisicaDAO.insert(pf);
 		
+	}
+	
+	@Test
+	public void editar() {
+		
+		PessoaFisicaDAO dao = new PessoaFisicaDAO();
+		PessoaFisica pf = new PessoaFisica(null, "Ciclano da Silva", "Rua A", "7070707070", "10010010010",
+				"ciclano@ciclano.com.br", new Date(), "M");
+		dao.insert(pf);
+		
+		PessoaFisica pf2 = dao.find(1L);
+		pf2.setNome("Beltrano da Silva");
+		pf2.setEmail("beltrano@beltrano.com.br");
+		dao.update(pf2);
+	
+
 	}
 	
 	
