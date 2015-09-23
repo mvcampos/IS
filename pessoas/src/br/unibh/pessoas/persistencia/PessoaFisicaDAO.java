@@ -101,7 +101,7 @@ public class PessoaFisicaDAO implements DAO<PessoaFisica, Long> {
 		} finally {
 			JDBCUtil.closeConnection();
 		}
-
+		
 	}
 
 	@Override
