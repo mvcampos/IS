@@ -38,6 +38,27 @@ public class PessoaFisicaDAO implements DAO<PessoaFisica, Long> {
 		return null;
 	}
 
+	public PessoaFisica find(String nome) {
+		try {
+			PreparedStatement p = (PreparedStatement) JDBCUtil.getConnection()
+					.prepareStatement("select * from tb_pessoa_fisica where nome like ?");
+			p.setString(1, nome + "%");
+			ResultSet res = p.executeQuery();
+			if (res.next()) {
+				return new PessoaFisica(res.getLong("id"), res.getString("nome"), res.getString("endereco"),
+						res.getString("telefone"), res.getString("cpf"), res.getString("email"),
+						res.getDate("data_nascimento"), res.getString("sexo"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.closeConnection();
+		}
+
+		return null;
+	}
+
 	@Override
 	public void insert(PessoaFisica t) {
 
@@ -101,7 +122,7 @@ public class PessoaFisicaDAO implements DAO<PessoaFisica, Long> {
 		} finally {
 			JDBCUtil.closeConnection();
 		}
-		
+
 	}
 
 	@Override
