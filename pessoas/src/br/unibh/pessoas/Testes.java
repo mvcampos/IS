@@ -21,7 +21,6 @@ public class Testes {
 	 **/
 
 	@Test
-	@Ignore
 	public void lista_pessoafisica() {
 
 		// List<PessoaFisica> l = dao.findAll();
@@ -33,7 +32,7 @@ public class Testes {
 			System.out.println("Total de registros Encontrados: " + lista.size());
 
 			for (PessoaFisica pessoa : lista) {
-				System.out.println(pessoa.getId() + " - " + pessoa.getNome());
+				//System.out.println(pessoa.getId() + " - " + pessoa.getNome());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -44,7 +43,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void inserir_pessoafisica() {
 
 		PessoaFisica pf = new PessoaFisica(null, "vinicius", "vinicius", "vinicius", "vinicius", "vinicius", new Date(),
@@ -60,7 +58,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void buscar_pessoafisica() {
 		PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
 		PessoaFisica pessoafisica = pessoafisicaDAO.find(1L);
@@ -75,7 +72,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void editar_pessoafisica() {
 
 		PessoaFisica pf = new PessoaFisica(null, "vinicius2", "vinicius", "vinicius", "vinicius", "vinicius",
@@ -95,7 +91,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void excluir_pessoafisica() {
 
 		PessoaFisica pf = new PessoaFisica(null, "vinicius3", "vinicius", "vinicius", "vinicius", "vinicius",
@@ -107,7 +102,7 @@ public class Testes {
 		PessoaFisica pf2 = pessoafisicaDAO.find("vinicius3");
 		Assert.assertNotNull(pf2);
 
-		pf2.setCpf("012.336.565-95");
+		pf2.setCpf("01233656595");
 
 		pessoafisicaDAO.update(pf2);
 		pessoafisicaDAO.delete(pf2);
@@ -122,7 +117,6 @@ public class Testes {
 	 */
 
 	@Test
-	@Ignore
 	public void lista_pessoajuridica() {
 
 		// List<PessoaFisica> l = dao.findAll();
@@ -134,7 +128,7 @@ public class Testes {
 			System.out.println("Total de registros Encontrados: " + lista.size());
 
 			for (PessoaJuridica pessoa : lista) {
-				System.out.println(pessoa.getId() + " - " + pessoa.getNome());
+				//System.out.println(pessoa.getId() + " - " + pessoa.getNome());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -145,7 +139,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void inserir_pessoajuridica() {
 
 		PessoaJuridica pj = new PessoaJuridica(null, "vinicius3", "vinicius", "vinicius", "vinicius", new Date(), "M");
@@ -153,14 +146,13 @@ public class Testes {
 		PessoaJuridicaDAO pessoajuridicaDAO = new PessoaJuridicaDAO();
 		pessoajuridicaDAO.insert(pj);
 
-		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius");
+		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius3");
 		Assert.assertNotNull(pj2);
 		pessoajuridicaDAO.delete(pj2);
 
 	}
 
 	@Test
-	@Ignore
 	public void buscar_pessoajuridica() {
 		PessoaJuridicaDAO pessoajuridicaDAO = new PessoaJuridicaDAO();
 		PessoaJuridica pessoajuridica = pessoajuridicaDAO.find(1L);
@@ -175,7 +167,6 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void editar_pessoajuridica() {
 
 		PessoaJuridica pj = new PessoaJuridica(null, "vinicius3", "vinicius", "vinicius", "vinicius", new Date(), "M");
@@ -184,7 +175,7 @@ public class Testes {
 
 		pessoajuridicaDAO.insert(pj);
 
-		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius2");
+		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius3");
 		Assert.assertNotNull(pj2);
 
 		pj.setSite("www.novosite.com");
@@ -195,13 +186,12 @@ public class Testes {
 	}
 
 	@Test
-	@Ignore
 	public void excluir_pessoajuridica() {
 
-		PessoaJuridica pf = new PessoaJuridica(null, "vinicius3", "vinicius", "vinicius", "vinicius", new Date(), "M");
+		PessoaJuridica pj = new PessoaJuridica(null, "vinicius3", "vinicius", "vinicius", "vinicius", new Date(), "M");
 
 		PessoaJuridicaDAO pessoajuridicaDAO = new PessoaJuridicaDAO();
-		pessoajuridicaDAO.insert(pf);
+		pessoajuridicaDAO.insert(pj);
 
 		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius3");
 		Assert.assertNotNull(pj2);

@@ -63,7 +63,7 @@ public class PessoaJuridicaDAO implements DAO<PessoaJuridica, Long> {
 		try {
 			PreparedStatement p = (PreparedStatement) JDBCUtil.getConnection().prepareStatement(
 					"insert into tb_pessoa_juridica (nome,endereco,telefone,cnpj,data_constituicao,site) values"
-							+ " (?,?,?,?,?,?,?)");
+							+ " (?,?,?,?,?,?)");
 			p.setString(1, t.getNome());
 			p.setString(2, t.getEndereco());
 			p.setString(3, t.getTelefone());
@@ -92,8 +92,8 @@ public class PessoaJuridicaDAO implements DAO<PessoaJuridica, Long> {
 			p.setString(2, t.getEndereco());
 			p.setString(3, t.getTelefone());
 			p.setString(4, t.getCnpj());
-			p.setString(6, df.format(t.getDataConstituicao()));
-			p.setString(7, t.getSite());
+			p.setString(5, df.format(t.getDataConstituicao()));
+			p.setString(6, t.getSite());
 			p.setLong(7, t.getId());
 			p.executeUpdate();
 		} catch (Exception e) {
