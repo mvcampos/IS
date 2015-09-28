@@ -194,9 +194,9 @@ public class Testes {
 		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius3");
 		Assert.assertNotNull(pj2);
 
-		pj.setSite("www.novosite.com");
+		pj2.setSite("www.novosite.com");
 
-		pessoajuridicaDAO.update(pj);
+		pessoajuridicaDAO.update(pj2);
 
 		
 		PessoaJuridica pj3 = pessoajuridicaDAO.find("vinicius3");
@@ -219,6 +219,7 @@ public class Testes {
 		Assert.assertNotNull(pj2);
 
 		pessoajuridicaDAO.delete(pj2);
+		Assert.assertNotNull(pj2);
 
 	}
 
