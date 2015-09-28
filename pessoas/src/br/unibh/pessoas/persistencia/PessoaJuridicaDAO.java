@@ -110,7 +110,7 @@ public class PessoaJuridicaDAO implements DAO<PessoaJuridica, Long> {
 			PreparedStatement p = (PreparedStatement) JDBCUtil.getConnection()
 					.prepareStatement("delete from tb_pessoa_juridica where id = ?");
 			p.setLong(1, t.getId());
-			p.executeUpdate();
+			p.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

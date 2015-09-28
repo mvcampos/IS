@@ -217,9 +217,10 @@ public class Testes {
 
 		PessoaJuridica pj2 = pessoajuridicaDAO.find("vinicius3");
 		Assert.assertNotNull(pj2);
-
+		
 		pessoajuridicaDAO.delete(pj2);
-		Assert.assertNotNull(pj2);
+		System.out.println(pj2.getNome());
+		Assert.assertNull(pj2);
 
 	}
 
