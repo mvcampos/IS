@@ -29,7 +29,7 @@ public class Testes {
 		try {
 			PessoaFisicaDAO pessoafisicaDAO = new PessoaFisicaDAO();
 			List<PessoaFisica> lista = pessoafisicaDAO.findAll();
-			System.out.println("Total de registros Encontrados: " + lista.size());
+			//System.out.println("Total de registros Encontrados: " + lista.size());
 
 			for (PessoaFisica pessoa : lista) {
 				//System.out.println(pessoa.getId() + " - " + pessoa.getNome());
@@ -52,9 +52,12 @@ public class Testes {
 		pessoafisicaDAO.insert(pf);
 
 		PessoaFisica pf2 = pessoafisicaDAO.find("vinicius");
+		
 		Assert.assertNotNull(pf2);
 		pessoafisicaDAO.delete(pf2);
-
+		
+		PessoaFisica pf3 = pessoafisicaDAO.find("vinicius");
+		Assert.assertNull(pf3);
 	}
 
 	@Test
@@ -67,7 +70,7 @@ public class Testes {
 
 		} else {
 
-			System.out.println(pessoafisica.getEmail() + " - " + pessoafisica.getNome());
+			//System.out.println(pessoafisica.getEmail() + " - " + pessoafisica.getNome());
 		}
 	}
 
@@ -84,10 +87,16 @@ public class Testes {
 		Assert.assertNotNull(pf2);
 
 		pf2.setCpf("01233656595");
+		pf2.setNome("teste vinicius");
+		
 
 		pessoafisicaDAO.update(pf2);
-		pessoafisicaDAO.delete(pf2);
-
+		
+		PessoaFisica pf3 = pessoafisicaDAO.find("teste vinicius");
+		Assert.assertEquals(pf3.getCpf(), "01233656595");
+		
+		pessoafisicaDAO.delete(pf3);
+		Assert.assertNotNull(pf3);
 	}
 
 	@Test
@@ -103,9 +112,16 @@ public class Testes {
 		Assert.assertNotNull(pf2);
 
 		pf2.setCpf("01233656595");
+		pf2.setNome("teste vinicius");
+		
 
 		pessoafisicaDAO.update(pf2);
-		pessoafisicaDAO.delete(pf2);
+		
+		PessoaFisica pf3 = pessoafisicaDAO.find("teste vinicius");
+		Assert.assertEquals(pf3.getCpf(), "01233656595");
+		
+		pessoafisicaDAO.delete(pf3);
+		Assert.assertNotNull(pf3);
 
 	}
 
@@ -125,7 +141,7 @@ public class Testes {
 		try {
 			PessoaJuridicaDAO pessoajuridicaDAO = new PessoaJuridicaDAO();
 			List<PessoaJuridica> lista = pessoajuridicaDAO.findAll();
-			System.out.println("Total de registros Encontrados: " + lista.size());
+			//System.out.println("Total de registros Encontrados: " + lista.size());
 
 			for (PessoaJuridica pessoa : lista) {
 				//System.out.println(pessoa.getId() + " - " + pessoa.getNome());
@@ -162,7 +178,7 @@ public class Testes {
 
 		} else {
 
-			System.out.println(pessoajuridica.getSite() + " - " + pessoajuridica.getNome());
+			//System.out.println(pessoajuridica.getSite() + " - " + pessoajuridica.getNome());
 		}
 	}
 
@@ -180,8 +196,14 @@ public class Testes {
 
 		pj.setSite("www.novosite.com");
 
-		pessoajuridicaDAO.update(pj2);
-		pessoajuridicaDAO.delete(pj2);
+		pessoajuridicaDAO.update(pj);
+
+		
+		PessoaJuridica pj3 = pessoajuridicaDAO.find("vinicius3");
+		Assert.assertEquals(pj3.getSite(), "www.novosite.com");
+		
+		pessoajuridicaDAO.delete(pj3);
+		Assert.assertNotNull(pj3);
 
 	}
 
